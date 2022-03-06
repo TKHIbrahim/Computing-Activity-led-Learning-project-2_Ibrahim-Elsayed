@@ -1,28 +1,34 @@
-int answer;
+int answer=0;
 void setup() {
   // put your setup code here, to run onc
   Serial.begin(9600);
- Serial.println(sumDigits(0)); // Should be 0
- Serial.println(sumDigits(2)); // Should be 2
- Serial.println(sumDigits(28)); // Should be 10
- Serial.println(sumDigits(504)); // Should be 9
- Serial.println(sumDigits(2048)); // Should be 14
- Serial.println(sumDigits(32767)); 
+  answer = power(3, 2);
+ Serial.println(answer);
+ // Should be 5
+ answer = power(5, 1);
+ Serial.println(answer);
+ // Should be 1
+ answer = power(9, 0);
+ Serial.println(answer);
+ // Should be 16384
+ answer = power(2, 14);
+ Serial.println(answer);
+ // Should be 0
+ answer = power(0, 4);
+ Serial.println(answer);
 }
 
 void loop()
 {
  
 }
-int sumDigits(int a)
-{ int sum = 0, remainder;
-  int t = a;
-  while (t!= 0)
+int power(int a, int b)
+{
+  int result = 1;
+  while (b != 0 )
   {
-    remainder = t% 10;
-    sum = remainder + sum;
-    t = t /10;
+    result *=a;
+    b--;
   }
-  return sum;
-  
+  return result;
 }
